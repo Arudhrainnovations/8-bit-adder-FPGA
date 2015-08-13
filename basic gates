@@ -1,0 +1,21 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    entity basicgates is
+        port(clk,a,b: in std_logic;
+       and1,or1,not1,nor1,nand1,xor1,xnor1:out std_logic );
+   end basicgates;
+   architecture beh of basicgates is
+       begin 
+           process(clk)
+               begin
+                   if clk'event and clk='1' then
+                       and1<= a and b;
+                       or1<= a or b;
+                       not1<= not a;
+                       nor1<= not (a or b);
+                       nand1<= not( a and b);
+                       xor1<= (not a and b) or (a and not b);
+                       xnor1<=  ((not a and not b)or(a and b));
+                   end if ;
+               end process;
+           end beh;
