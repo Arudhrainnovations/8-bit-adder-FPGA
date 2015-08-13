@@ -1,0 +1,21 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    use ieee.std_logic_unsigned.all;
+    entity upcount is
+    port(clk,clr: in std_logic;
+    outp: out std_logic_vector(3 downto 0)) ;
+end upcount;
+architecture beh of upcount is
+    signal tmp : std_logic_vector(3 downto 0) ;
+    begin 
+        process(clr,clk)
+            begin
+                if clr='1' then
+                    tmp<= "0000";
+                    elsif clk' event and clk='1' then
+                        tmp<= tmp+1;
+                    
+                end if;
+            end process;
+            outp <= tmp;
+        end beh;
