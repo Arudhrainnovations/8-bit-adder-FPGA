@@ -1,0 +1,25 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    entity encoder is
+        port(clk: in std_logic;
+        inp:in std_logic_vector(7 downto 0);
+        outp:out std_logic_vector(2 downto 0));
+    end encoder;
+    architecture beh of encoder is
+        begin 
+            process(clk)
+                begin
+                    if clk' event and clk='1' then
+                        case inp is
+                                when  "00000001"=> outp  <=  "000" ;
+                                when  "00000010"=> outp  <=  "001" ;
+                                when  "00000100"=> outp  <=  "010" ;
+                                when  "00001000"=> outp  <=  "011" ;
+                                when  "00010000"=> outp  <=  "100"  ;
+                                when  "00100000"=> outp  <=  "101" ;
+                                when  "01000000"=> outp  <=   "110"  ;
+                             when others=> outp <= "111";
+                              end case;
+end if;
+end process;
+end beh;                                  
