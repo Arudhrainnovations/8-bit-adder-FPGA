@@ -1,0 +1,19 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    entity shiftreg is
+        port(clk,a,b : in std_logic;
+        q: out std_logic_vector(7 downto 1));
+    end shiftreg ;
+    architecture beh of shiftreg is
+        signal tep:std_logic_vector(6 downto 0);
+        begin
+            process(clk)
+                begin
+            if clk'event and clk='1' then
+                 tep(5)<=a; tep(4)<=b;
+tep (6 downto 0)<= tep(6) & a&b &tep (3 downto 0);
+
+                    end if;
+                end process;
+                q(7 downto 1) <= tep(6 downto 0);
+              end beh;
