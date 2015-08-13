@@ -1,0 +1,18 @@
+library ieee;
+    use ieee.std_logic_1164.all;
+    entity gray2binary is
+        port(clk,g1,g2,g3,g4:in std_logic;
+        b1,b2,b3,b4:out std_logic);
+    end gray2binary;
+    architecture beh of gray2binary is
+        begin 
+            process(clk)
+                begin
+                    if clk' event and clk='1' then
+                        b4<= g4;
+                        b3<=g3 xor g4;
+                        b2<=g2 xor g3;
+                        b1<=g1 xor g2;
+                    end if;
+                end process;
+            end beh;
